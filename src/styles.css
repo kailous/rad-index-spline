@@ -41,6 +41,9 @@ canvas {
 	/* Safari */
 }
 /* 鼠标指针屏蔽 */
+.cursor-black {
+	display: block !important;
+}
 .cursor-enlarged {
 	width: var(--cursor-size-hover) !important;
 	height: var(--cursor-size-hover) !important;

@@ -9,22 +9,22 @@ const cursor = document.createElement('div');
 cursor.classList.add('cursor');
 document.body.appendChild(cursor);
 
-// 移动光标，自动根据光标尺寸调整偏移
-document.addEventListener('mousemove', e => {
-    // 获取光标元素的尺寸
+// 只有当鼠标在canvas上时才更新和显示光标
+canvas.addEventListener('mousemove', e => {
+    const rect = canvas.getBoundingClientRect();
     const cursorWidth = cursor.offsetWidth;
     const cursorHeight = cursor.offsetHeight;
-
-    // 计算偏移量，以确保光标的中心跟随鼠标
     const offsetX = cursorWidth / 2;
     const offsetY = cursorHeight / 2;
 
-    // 设置光标位置，应用计算后的偏移量
-    cursor.style.left = `${e.clientX - offsetX}px`;
-    cursor.style.top = `${e.clientY - offsetY}px`;
-
-    // 确保光标在移动时可见
+    cursor.style.left = `${e.clientX - rect.left - offsetX}px`;
+    cursor.style.top = `${e.clientY - rect.top - offsetY}px`;
     cursor.style.visibility = 'visible';
+});
+
+// 当鼠标离开canvas时隐藏光标
+canvas.addEventListener('mouseleave', () => {
+    cursor.style.visibility = 'hidden';
 });
 
 // 定义交互元素及其鼠标悬停时光标的变化
