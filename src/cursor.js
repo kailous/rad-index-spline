@@ -17,12 +17,12 @@ document.addEventListener('mousemove', e => {
 });
 
 // 当鼠标离开<body>时隐藏光标
-document.body.addEventListener('mouseleave', () => {
+document.canvas.addEventListener('mouseleave', () => {
     cursor.style.visibility = 'hidden';
 });
 
 // 当鼠标进入<body>时显示光标
-document.body.addEventListener('mouseenter', () => {
+document.canvas.addEventListener('mouseenter', () => {
     cursor.style.visibility = 'visible';
 });
 
